@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohit Jakhotra | Developer</title>
+  <meta name="title" content="Mohit Jakhotra | Developer">
+  <meta name="description" content="Personal portfolio of Mohit Jakhotra — Full Stack Developer building creative things for the web.">
+  <meta name="author" content="Mohit Jakhotra">
+  <meta name="keywords" content="mohit jakhotra, developer, portfolio, full stack, web developer, software engineer">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mohit Jakhotra | Developer">
+  <meta property="og:description" content="Personal portfolio of Mohit Jakhotra — Full Stack Developer building creative things for the web.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== BOOT SCREEN ==================== -->
+  <div id="boot-screen" class="boot-screen">
+    <div class="boot-line"><span class="comment">// system.boot()</span></div>
+    <div class="boot-line"><span class="keyword">BIOS</span> v4.2.0 — <span class="string">Mohit OS</span></div>
+    <div class="boot-line">Checking memory............. <span class="string">OK</span></div>
+    <div class="boot-line">Loading <span class="fn">creativity.dll</span>...... <span class="string">OK</span></div>
+    <div class="boot-line">Loading <span class="fn">design-system.css</span>... <span class="string">OK</span></div>
+    <div class="boot-line">Mounting <span class="fn">/projects</span>........... <span class="string">OK</span></div>
+    <div class="boot-line">Compiling <span class="fn">skills[]</span>......... <span class="string">OK</span></div>
+    <div class="boot-line">Injecting <span class="fn">caffeine.js</span>...... <span class="string">OK</span></div>
+    <div class="boot-line"><span class="keyword">></span> <span class="string">Portfolio loaded. Welcome.</span></div>
+    <div class="boot-progress-bar">
+      <div class="boot-progress-fill"></div>
+    </div>
+  </div>
+
+  <!-- ==================== NOISE + SCAN LINE ==================== -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="scan-line" aria-hidden="true"></div>
+
+  <!-- ==================== CUSTOM CURSOR ==================== -->
+  <div class="custom-cursor" aria-hidden="true"></div>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="brace">{</span> MJ <span class="brace">}</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#about" class="nav-link">about</a>
+        <a href="#skills" class="nav-link">skills</a>
+        <a href="#projects" class="nav-link">projects</a>
+        <a href="#experience" class="nav-link">experience</a>
+        <a href="#contact" class="nav-cta">get_in_touch()</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <i class='bx bx-sun'></i>
+        </button>
+      </div>
+
+      <button id="nav-hamburger" class="nav-hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="#about" class="nav-link">about</a>
+    <a href="#skills" class="nav-link">skills</a>
+    <a href="#projects" class="nav-link">projects</a>
+    <a href="#experience" class="nav-link">experience</a>
+    <a href="#contact" class="nav-link">contact</a>
+    <button id="theme-toggle-mobile" class="theme-toggle" aria-label="Toggle theme" onclick="document.getElementById('theme-toggle').click()">
+      <i class='bx bx-sun'></i>
+    </button>
+  </div>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section id="hero" class="hero section">
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-greeting font-mono">
+          <span class="wave">👋</span> Hey there, I'm
+        </p>
+
+        <h1 class="hero-name font-heading">
+          <span class="glitch-text" data-text="Mohit">Mohit</span><br>
+          <span class="hero-title-line2 glitch-text" data-text="Jakhotra">Jakhotra</span>
+        </h1>
+
+        <div class="hero-subtitle">
+          <span id="typed-subtitle"></span>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">
+            <i class='bx bx-code-alt'></i> View Projects
+          </a>
+          <a href="#contact" class="btn-secondary">
+            <i class='bx bx-envelope'></i> Say Hello
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Shapes -->
+    <div class="hero-shapes" aria-hidden="true">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+      <div class="shape shape-5"></div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="hero-scroll-indicator">
+      <div class="scroll-arrow"></div>
+      <span>scroll down</span>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT SECTION ==================== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-label reveal">about_me</div>
+      <h2 class="section-title reveal reveal-delay-1">
+        Who <span class="accent">am</span> I?
+      </h2>
+
+      <div class="about-grid">
+        <!-- Terminal Card -->
+        <div class="about-terminal reveal reveal-delay-2">
+          <div class="terminal-header">
+            <div class="terminal-dot red"></div>
+            <div class="terminal-dot yellow"></div>
+            <div class="terminal-dot green"></div>
+            <span class="terminal-title">about.sh</span>
+          </div>
+          <div class="terminal-body">
+            <span class="prompt">$ whoami</span>
+            <span class="output">
+              I'm a developer who loves turning ideas into reality through code.
+              I enjoy crafting clean, efficient, and creative solutions to
+              complex problems.
+            </span>
+            <span class="prompt">$ cat interests.txt</span>
+            <span class="output">
+              Web Development, Open Source, System Design, UI/UX,
+              Problem Solving, and learning something new every day.
+            </span>
+            <span class="prompt">$ echo $MOTTO</span>
+            <span class="output">
+              "Code is poetry — write it with intention."
+            </span>
+          </div>
+        </div>
+
+        <!-- Visual Side -->
+        <div class="about-visual reveal reveal-delay-3">
+          <div class="about-photo-frame">
+            <span class="placeholder-avatar">🧑‍💻</span>
+          </div>
+
+          <div class="about-info-chips">
+            <div class="info-chip">
+              <i class='bx bx-map'></i> India
+            </div>
+            <div class="info-chip">
+              <i class='bx bx-briefcase'></i> Open to Work
+            </div>
+            <div class="info-chip">
+              <i class='bx bx-code-alt'></i> Full Stack
+            </div>
+            <div class="info-chip">
+              <i class='bx bx-coffee'></i> Coffee Driven
+            </div>
+          </div>
+
+          <!-- Stats -->
+          <div class="about-stats">
+            <div class="stat-card">
+              <div class="stat-number" data-count="10" data-suffix="+">0</div>
+              <div class="stat-label">Projects Built</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" data-count="5" data-suffix="+">0</div>
+              <div class="stat-label">Tech Stacks</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" data-count="500" data-suffix="+">0</div>
+              <div class="stat-label">Commits</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" data-count="99" data-suffix="%">0</div>
+              <div class="stat-label">Passion</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SKILLS SECTION ==================== -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-label reveal">tech_stack</div>
+      <h2 class="section-title reveal reveal-delay-1">
+        Tools I <span class="accent">work</span> with
+      </h2>
+
+      <div class="skills-categories">
+        <!-- Frontend -->
+        <div class="skill-category reveal reveal-delay-2">
+          <h3 class="skill-category-title">
+            <i class='bx bx-palette'></i> Frontend
+          </h3>
+          <div class="skill-chips">
+            <div class="skill-chip" style="--delay: 0s; --duration: 3.5s;">
+              <i class="devicon-html5-plain"></i> HTML5
+            </div>
+            <div class="skill-chip" style="--delay: 0.3s; --duration: 4s;">
+              <i class="devicon-css3-plain"></i> CSS3
+            </div>
+            <div class="skill-chip" style="--delay: 0.6s; --duration: 3.8s;">
+              <i class="devicon-javascript-plain"></i> JavaScript
+            </div>
+            <div class="skill-chip" style="--delay: 0.2s; --duration: 4.2s;">
+              <i class="devicon-react-original"></i> React
+            </div>
+            <div class="skill-chip" style="--delay: 0.5s; --duration: 3.6s;">
+              <i class="devicon-tailwindcss-original"></i> Tailwind
+            </div>
+          </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="skill-category reveal reveal-delay-3">
+          <h3 class="skill-category-title">
+            <i class='bx bx-server'></i> Backend
+          </h3>
+          <div class="skill-chips">
+            <div class="skill-chip" style="--delay: 0.1s; --duration: 4.1s;">
+              <i class="devicon-nodejs-plain"></i> Node.js
+            </div>
+            <div class="skill-chip" style="--delay: 0.4s; --duration: 3.7s;">
+              <i class="devicon-express-original"></i> Express
+            </div>
+            <div class="skill-chip" style="--delay: 0.7s; --duration: 4.3s;">
+              <i class="devicon-python-plain"></i> Python
+            </div>
+            <div class="skill-chip" style="--delay: 0.2s; --duration: 3.9s;">
+              <i class="devicon-mongodb-plain"></i> MongoDB
+            </div>
+            <div class="skill-chip" style="--delay: 0.5s; --duration: 4s;">
+              <i class="devicon-postgresql-plain"></i> PostgreSQL
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools & DevOps -->
+        <div class="skill-category reveal reveal-delay-4">
+          <h3 class="skill-category-title">
+            <i class='bx bx-wrench'></i> Tools & DevOps
+          </h3>
+          <div class="skill-chips">
+            <div class="skill-chip" style="--delay: 0.2s; --duration: 3.6s;">
+              <i class="devicon-git-plain"></i> Git
+            </div>
+            <div class="skill-chip" style="--delay: 0.5s; --duration: 4.2s;">
+              <i class="devicon-docker-plain"></i> Docker
+            </div>
+            <div class="skill-chip" style="--delay: 0.3s; --duration: 3.8s;">
+              <i class="devicon-linux-plain"></i> Linux
+            </div>
+            <div class="skill-chip" style="--delay: 0.6s; --duration: 4s;">
+              <i class="devicon-vscode-plain"></i> VS Code
+            </div>
+            <div class="skill-chip" style="--delay: 0.1s; --duration: 4.4s;">
+              <i class="devicon-github-original"></i> GitHub
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MARQUEE BANNER ==================== -->
+  <div class="marquee-section" aria-hidden="true">
+    <div class="marquee-track">
+      <div class="marquee-text">
+        <span>CREATIVE DEVELOPER</span> <span class="sep">✦</span>
+        <span>PROBLEM SOLVER</span> <span class="sep">✦</span>
+        <span>OPEN SOURCE</span> <span class="sep">✦</span>
+        <span>CLEAN CODE</span> <span class="sep">✦</span>
+        <span>UI ENTHUSIAST</span> <span class="sep">✦</span>
+        <span>FULL STACK</span> <span class="sep">✦</span>
+      </div>
+      <div class="marquee-text">
+        <span>CREATIVE DEVELOPER</span> <span class="sep">✦</span>
+        <span>PROBLEM SOLVER</span> <span class="sep">✦</span>
+        <span>OPEN SOURCE</span> <span class="sep">✦</span>
+        <span>CLEAN CODE</span> <span class="sep">✦</span>
+        <span>UI ENTHUSIAST</span> <span class="sep">✦</span>
+        <span>FULL STACK</span> <span class="sep">✦</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PROJECTS SECTION ==================== -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-label reveal">my_work</div>
+      <h2 class="section-title reveal reveal-delay-1">
+        Things I've <span class="accent">built</span>
+      </h2>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card reveal reveal-delay-2">
+          <div class="project-image">
+            <i class='bx bx-store-alt'></i>
+            <span class="project-number">#01</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">E-Commerce Platform</h3>
+            <p class="project-desc">
+              A full-featured e-commerce app with product management, cart, checkout,
+              and payment integration. Built with a modern stack.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">Node.js</span>
+              <span class="project-tag">MongoDB</span>
+              <span class="project-tag">Stripe</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">
+                <i class='bx bxl-github'></i> Code
+              </a>
+              <a href="#" class="project-link">
+                <i class='bx bx-link-external'></i> Live
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card reveal reveal-delay-3">
+          <div class="project-image">
+            <i class='bx bx-chat'></i>
+            <span class="project-number">#02</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Real-Time Chat App</h3>
+            <p class="project-desc">
+              A WebSocket-powered chat application with rooms, typing indicators,
+              and message history. Scalable and lightning fast.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Socket.io</span>
+              <span class="project-tag">Express</span>
+              <span class="project-tag">Redis</span>
+              <span class="project-tag">React</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">
+                <i class='bx bxl-github'></i> Code
+              </a>
+              <a href="#" class="project-link">
+                <i class='bx bx-link-external'></i> Live
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card reveal reveal-delay-4">
+          <div class="project-image">
+            <i class='bx bx-task'></i>
+            <span class="project-number">#03</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Task Management CLI</h3>
+            <p class="project-desc">
+              A beautiful terminal-based task manager with boards, labels, priorities,
+              and due dates. Productivity, reimagined in the terminal.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Click</span>
+              <span class="project-tag">SQLite</span>
+              <span class="project-tag">Rich</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">
+                <i class='bx bxl-github'></i> Code
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== EXPERIENCE SECTION ==================== -->
+  <section id="experience" class="section">
+    <div class="container">
+      <div class="section-label reveal">career_path</div>
+      <h2 class="section-title reveal reveal-delay-1">
+        Where I've <span class="accent">worked</span>
+      </h2>
+
+      <div class="timeline">
+        <!-- Experience 1 -->
+        <div class="timeline-item reveal reveal-delay-2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date">2024 — Present</span>
+            <h3 class="timeline-role">Full Stack Developer</h3>
+            <p class="timeline-company">@ Your Company</p>
+            <ul class="timeline-desc">
+              <li>Building and maintaining web applications using modern frameworks</li>
+              <li>Collaborating with cross-functional teams to deliver features</li>
+              <li>Writing clean, testable, and well-documented code</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Experience 2 -->
+        <div class="timeline-item reveal reveal-delay-3">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date">2023 — 2024</span>
+            <h3 class="timeline-role">Frontend Developer Intern</h3>
+            <p class="timeline-company">@ Previous Company</p>
+            <ul class="timeline-desc">
+              <li>Developed responsive UI components with React</li>
+              <li>Improved page load performance by 40%</li>
+              <li>Participated in code reviews and agile ceremonies</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Experience 3 -->
+        <div class="timeline-item reveal reveal-delay-4">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date">2022 — 2023</span>
+            <h3 class="timeline-role">Freelance Developer</h3>
+            <p class="timeline-company">@ Self-Employed</p>
+            <ul class="timeline-desc">
+              <li>Built custom websites and web apps for small businesses</li>
+              <li>Handled full project lifecycle from design to deployment</li>
+              <li>Managed client relationships and project timelines</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT SECTION ==================== -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-label reveal">get_in_touch</div>
+      <h2 class="section-title reveal reveal-delay-1">
+        Let's <span class="accent">talk</span>
+      </h2>
+
+      <div class="contact-grid">
+        <!-- Contact Form -->
+        <div class="contact-form-wrapper reveal reveal-delay-2">
+          <div class="contact-form-header">
+            <div class="terminal-dot red"></div>
+            <div class="terminal-dot yellow"></div>
+            <div class="terminal-dot green"></div>
+            <span class="terminal-title">send_message.sh</span>
+          </div>
+          <form class="contact-form" id="contact-form" onsubmit="return false;">
+            <div class="form-group">
+              <label class="form-label">
+                <span class="prompt-symbol">$</span> enter_name
+              </label>
+              <input type="text" class="form-input" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">
+                <span class="prompt-symbol">$</span> enter_email
+              </label>
+              <input type="email" class="form-input" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">
+                <span class="prompt-symbol">$</span> enter_message
+              </label>
+              <textarea class="form-input" placeholder="Hey, I'd love to work together..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary form-submit">
+              <i class='bx bx-send'></i> send_message()
+            </button>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info reveal reveal-delay-3">
+          <p class="contact-text">
+            Have a project in mind? Want to collaborate? Or just want to say hi?
+            My inbox is always open. Let's build something awesome together.
+          </p>
+
+          <div class="social-grid">
+            <a href="https://github.com/mohitjakhotra" target="_blank" class="social-link">
+              <i class='bx bxl-github'></i> GitHub
+            </a>
+            <a href="https://linkedin.com/in/" target="_blank" class="social-link">
+              <i class='bx bxl-linkedin'></i> LinkedIn
+            </a>
+            <a href="https://twitter.com/" target="_blank" class="social-link">
+              <i class='bx bxl-twitter'></i> Twitter
+            </a>
+            <a href="mailto:hello@example.com" class="social-link">
+              <i class='bx bx-envelope'></i> Email
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-text">
+          <span class="accent">&lt;</span> Crafted with ☕ by <span class="accent">Mohit Jakhotra</span> <span class="accent">/&gt;</span>
+        </p>
+        <div class="footer-links">
+          <a href="https://github.com/mohitjakhotra" target="_blank" class="footer-link">
+            <i class='bx bxl-github'></i> GitHub
+          </a>
+          <a href="#hero" class="footer-link">
+            ↑ Back to top
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/effects.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

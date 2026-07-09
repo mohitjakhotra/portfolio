@@ -168,10 +168,26 @@ function initWaveform() {
     ctx.fill();
 
     time += 0.02;
-    requestAnimationFrame(drawWaveform);
+    
+    if (isVisible) {
+      requestAnimationFrame(drawWaveform);
+    }
   }
 
-  drawWaveform();
+  let isVisible = true;
+  const observer = new IntersectionObserver((entries) => {
+    isVisible = entries[0].isIntersecting;
+    if (isVisible) {
+      drawWaveform();
+    }
+  });
+  
+  const heroSection = document.getElementById('hero');
+  if (heroSection) {
+    observer.observe(heroSection);
+  } else {
+    drawWaveform();
+  }
 }
 
 /**

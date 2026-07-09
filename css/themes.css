@@ -1,36 +1,41 @@
 /* ============================================================
-   THEMES.CSS — Light/Dark Mode CSS Custom Properties
+   THEMES.CSS — Code × Music | Waveform Minimalist Palette
    ============================================================ */
 
 :root {
-  /* Dark mode (default) */
+  /* Dark mode (default) — Digital Audio Workstation vibe */
   --bg-primary: #0a0a0f;
-  --bg-secondary: #12121a;
-  --bg-card: #1a1a28;
-  --bg-card-hover: #22223a;
+  --bg-secondary: #111118;
+  --bg-card: #16161f;
+  --bg-card-hover: #1e1e2a;
   --bg-overlay: rgba(10, 10, 15, 0.92);
 
   --text-primary: #e8e8f0;
-  --text-secondary: #9898b0;
-  --text-muted: #5a5a78;
+  --text-secondary: #8888a0;
+  --text-muted: #4a4a62;
 
-  --accent-green: #00ff88;
-  --accent-coral: #ff6b6b;
-  --accent-purple: #6c63ff;
-  --accent-cyan: #00d4ff;
-  --accent-yellow: #ffd93d;
+  /* Signal colors — inspired by studio gear LEDs */
+  --accent-signal: #00ff88;        /* Signal green — primary accent */
+  --accent-warmth: #f0a050;        /* Warm amber — tube amp glow */
+  --accent-redline: #ff4444;       /* Redline — VU meter peak */
+  --accent-blue: #0088ff;          /* Electric blue — digital signal */
+  --accent-purple: #7c6cff;       /* Electric purple — creative spark */
 
-  --border-color: #2a2a40;
+  --border-color: #1e1e30;
   --border-strong: #e8e8f0;
 
-  --shadow-neo: 6px 6px 0px 0px var(--accent-green);
-  --shadow-neo-sm: 4px 4px 0px 0px var(--accent-green);
-  --shadow-neo-coral: 6px 6px 0px 0px var(--accent-coral);
-  --shadow-neo-purple: 6px 6px 0px 0px var(--accent-purple);
+  --shadow-neo: 6px 6px 0px 0px var(--accent-signal);
+  --shadow-neo-sm: 4px 4px 0px 0px var(--accent-signal);
+  --shadow-neo-warm: 6px 6px 0px 0px var(--accent-warmth);
+  --shadow-neo-blue: 6px 6px 0px 0px var(--accent-blue);
 
-  --noise-opacity: 0.04;
-  --cursor-color: var(--accent-green);
-  --terminal-glow: 0 0 20px rgba(0, 255, 136, 0.15);
+  --noise-opacity: 0.035;
+  --cursor-color: var(--accent-signal);
+
+  --waveform-color: rgba(0, 255, 136, 0.12);
+  --waveform-stroke: rgba(0, 255, 136, 0.35);
+  --eq-bar-glow: rgba(0, 255, 136, 0.25);
+  --string-color: rgba(255, 255, 255, 0.08);
 
   --transition-theme: background-color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
                       color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
@@ -39,34 +44,38 @@
 }
 
 /* ============================================================
-   LIGHT MODE
+   LIGHT MODE — Warm studio daylight
    ============================================================ */
 body.light-mode {
-  --bg-primary: #f0f0e8;
-  --bg-secondary: #e8e8df;
+  --bg-primary: #f5f3ee;
+  --bg-secondary: #ebe8e2;
   --bg-card: #ffffff;
-  --bg-card-hover: #f8f8f2;
-  --bg-overlay: rgba(240, 240, 232, 0.92);
+  --bg-card-hover: #f9f8f5;
+  --bg-overlay: rgba(245, 243, 238, 0.92);
 
   --text-primary: #1a1a2e;
   --text-secondary: #4a4a68;
   --text-muted: #8a8aa0;
 
-  --accent-green: #00c96a;
-  --accent-coral: #e84855;
-  --accent-purple: #5a52e0;
-  --accent-cyan: #0099cc;
-  --accent-yellow: #e6b800;
+  --accent-signal: #00b366;
+  --accent-warmth: #d48820;
+  --accent-redline: #cc3333;
+  --accent-blue: #0066cc;
+  --accent-purple: #5a4fd4;
 
-  --border-color: #d0d0c8;
+  --border-color: #d8d4cc;
   --border-strong: #1a1a2e;
 
   --shadow-neo: 6px 6px 0px 0px var(--border-strong);
   --shadow-neo-sm: 4px 4px 0px 0px var(--border-strong);
-  --shadow-neo-coral: 6px 6px 0px 0px var(--accent-coral);
-  --shadow-neo-purple: 6px 6px 0px 0px var(--accent-purple);
+  --shadow-neo-warm: 6px 6px 0px 0px var(--accent-warmth);
+  --shadow-neo-blue: 6px 6px 0px 0px var(--accent-blue);
 
-  --noise-opacity: 0.03;
+  --noise-opacity: 0.025;
   --cursor-color: var(--accent-purple);
-  --terminal-glow: 0 0 20px rgba(90, 82, 224, 0.1);
+
+  --waveform-color: rgba(0, 102, 204, 0.08);
+  --waveform-stroke: rgba(0, 102, 204, 0.2);
+  --eq-bar-glow: rgba(0, 179, 102, 0.15);
+  --string-color: rgba(0, 0, 0, 0.06);
 }

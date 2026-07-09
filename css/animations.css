@@ -1,22 +1,11 @@
 /* ============================================================
-   ANIMATIONS.CSS — All Keyframe Animations
+   ANIMATIONS.CSS — Code × Music | All Keyframe Animations
    ============================================================ */
 
-/* --- Boot / Intro --- */
-@keyframes blink-caret {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
+/* --- Core Transitions --- */
 @keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fade-in {
@@ -25,57 +14,29 @@
 }
 
 @keyframes slide-in-left {
-  from {
-    opacity: 0;
-    transform: translateX(-60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-60px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slide-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-/* --- Boot Sequence --- */
+/* --- Boot / Soundcheck --- */
+@keyframes blink-caret {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 @keyframes boot-line-appear {
-  from {
-    opacity: 0;
-    transform: translateX(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes boot-fade-out {
-  0% { opacity: 1; }
-  80% { opacity: 1; }
-  100% {
-    opacity: 0;
-    pointer-events: none;
-  }
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes boot-progress {
@@ -85,133 +46,85 @@
 
 /* --- Glitch Effect --- */
 @keyframes glitch-1 {
-  0%, 100% {
-    clip-path: inset(40% 0 61% 0);
-    transform: translate(0);
-  }
-  20% {
-    clip-path: inset(92% 0 1% 0);
-    transform: translate(-5px, 2px);
-  }
-  40% {
-    clip-path: inset(43% 0 1% 0);
-    transform: translate(5px, -1px);
-  }
-  60% {
-    clip-path: inset(25% 0 58% 0);
-    transform: translate(-3px, 3px);
-  }
-  80% {
-    clip-path: inset(54% 0 7% 0);
-    transform: translate(4px, -2px);
-  }
+  0%, 100% { clip-path: inset(40% 0 61% 0); transform: translate(0); }
+  20% { clip-path: inset(92% 0 1% 0); transform: translate(-5px, 2px); }
+  40% { clip-path: inset(43% 0 1% 0); transform: translate(5px, -1px); }
+  60% { clip-path: inset(25% 0 58% 0); transform: translate(-3px, 3px); }
+  80% { clip-path: inset(54% 0 7% 0); transform: translate(4px, -2px); }
 }
 
 @keyframes glitch-2 {
-  0%, 100% {
-    clip-path: inset(65% 0 13% 0);
-    transform: translate(0);
-  }
-  20% {
-    clip-path: inset(20% 0 52% 0);
-    transform: translate(4px, -3px);
-  }
-  40% {
-    clip-path: inset(72% 0 15% 0);
-    transform: translate(-4px, 1px);
-  }
-  60% {
-    clip-path: inset(5% 0 76% 0);
-    transform: translate(3px, 2px);
-  }
-  80% {
-    clip-path: inset(38% 0 44% 0);
-    transform: translate(-2px, -1px);
-  }
+  0%, 100% { clip-path: inset(65% 0 13% 0); transform: translate(0); }
+  20% { clip-path: inset(20% 0 52% 0); transform: translate(4px, -3px); }
+  40% { clip-path: inset(72% 0 15% 0); transform: translate(-4px, 1px); }
+  60% { clip-path: inset(5% 0 76% 0); transform: translate(3px, 2px); }
+  80% { clip-path: inset(38% 0 44% 0); transform: translate(-2px, -1px); }
 }
 
-@keyframes glitch-skew {
-  0%, 100% { transform: skew(0deg); }
-  20% { transform: skew(-2deg); }
-  40% { transform: skew(1deg); }
-  60% { transform: skew(-1deg); }
-  80% { transform: skew(2deg); }
+/* --- Equalizer Bars --- */
+@keyframes eq-bar-1 {
+  0%, 100% { height: var(--eq-height, 60%); }
+  25% { height: calc(var(--eq-height, 60%) * 0.4); }
+  50% { height: calc(var(--eq-height, 60%) * 0.85); }
+  75% { height: calc(var(--eq-height, 60%) * 0.55); }
 }
 
-/* --- Floating Shapes --- */
-@keyframes float-shape-1 {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  25% {
-    transform: translate(20px, -30px) rotate(90deg);
-  }
-  50% {
-    transform: translate(-10px, -50px) rotate(180deg);
-  }
-  75% {
-    transform: translate(15px, -20px) rotate(270deg);
-  }
+@keyframes eq-bar-2 {
+  0%, 100% { height: var(--eq-height, 60%); }
+  20% { height: calc(var(--eq-height, 60%) * 0.7); }
+  45% { height: calc(var(--eq-height, 60%) * 0.35); }
+  70% { height: calc(var(--eq-height, 60%) * 0.9); }
 }
 
-@keyframes float-shape-2 {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  25% {
-    transform: translate(-25px, -15px) rotate(-90deg);
-  }
-  50% {
-    transform: translate(10px, -40px) rotate(-180deg);
-  }
-  75% {
-    transform: translate(-20px, -25px) rotate(-270deg);
-  }
+@keyframes eq-bar-3 {
+  0%, 100% { height: var(--eq-height, 60%); }
+  30% { height: calc(var(--eq-height, 60%) * 0.5); }
+  60% { height: calc(var(--eq-height, 60%) * 0.95); }
+  85% { height: calc(var(--eq-height, 60%) * 0.3); }
 }
 
-@keyframes float-shape-3 {
-  0%, 100% {
-    transform: translate(0, 0) rotate(45deg);
-  }
-  33% {
-    transform: translate(30px, -20px) rotate(165deg);
-  }
-  66% {
-    transform: translate(-15px, -45px) rotate(285deg);
-  }
+@keyframes eq-bounce {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.6); }
 }
 
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 5px var(--accent-green),
-                0 0 15px rgba(0, 255, 136, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 15px var(--accent-green),
-                0 0 40px rgba(0, 255, 136, 0.3);
-  }
+/* --- Guitar String Vibration --- */
+@keyframes string-vibrate {
+  0% { d: path("M 0 1 Q 25 1, 50 1 T 100 1"); }
+  25% { d: path("M 0 1 Q 25 -1, 50 1 T 100 1"); }
+  50% { d: path("M 0 1 Q 25 2, 50 0 T 100 1"); }
+  75% { d: path("M 0 1 Q 25 0, 50 2 T 100 1"); }
+  100% { d: path("M 0 1 Q 25 1, 50 1 T 100 1"); }
 }
 
-/* --- Marquee --- */
-@keyframes marquee-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+@keyframes string-pluck {
+  0% { transform: scaleY(1); opacity: 0.3; }
+  10% { transform: scaleY(6); opacity: 0.8; }
+  30% { transform: scaleY(-3); opacity: 0.6; }
+  50% { transform: scaleY(2); opacity: 0.4; }
+  70% { transform: scaleY(-1); opacity: 0.3; }
+  100% { transform: scaleY(1); opacity: 0.15; }
 }
 
-/* --- Skill Chip Float --- */
-@keyframes chip-float {
-  0%, 100% {
-    transform: translateY(0px) rotate(var(--rotation, 0deg));
-  }
-  50% {
-    transform: translateY(-12px) rotate(calc(var(--rotation, 0deg) + 3deg));
-  }
+/* --- VU Meter Needle --- */
+@keyframes vu-needle {
+  0%, 100% { transform: rotate(-30deg); }
+  30% { transform: rotate(15deg); }
+  50% { transform: rotate(5deg); }
+  70% { transform: rotate(20deg); }
+  85% { transform: rotate(-5deg); }
 }
 
-/* --- Counter Roll --- */
-@keyframes count-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* --- Signal Node Pulse --- */
+@keyframes signal-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.5); }
+  50% { box-shadow: 0 0 0 12px rgba(0, 255, 136, 0); }
+}
+
+/* --- LED Blink --- */
+@keyframes led-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
 
 /* --- Noise --- */
@@ -235,42 +148,26 @@
   100% { top: 110%; }
 }
 
-/* --- Section Reveal --- */
-@keyframes reveal-section {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* --- Marquee / Scrolling Text --- */
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-/* --- Timeline Dot Pulse --- */
-@keyframes dot-pulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
-  }
-}
-
-/* --- Button Hover Shimmer --- */
+/* --- Button Shimmer --- */
 @keyframes shimmer {
   0% { left: -100%; }
   100% { left: 200%; }
 }
 
-/* --- Gradient border spin for contact form --- */
-@keyframes border-spin {
-  0% { --angle: 0deg; }
-  100% { --angle: 360deg; }
-}
-
-/* --- Cursor blink for terminal form --- */
+/* --- Cursor Blink --- */
 @keyframes terminal-cursor-blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+/* --- Waveform Fade-in --- */
+@keyframes waveform-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

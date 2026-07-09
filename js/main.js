@@ -1,5 +1,5 @@
 /* ============================================================
-   MAIN.JS — Boot Sequence, Navigation, Theme, Scroll Reveal
+   MAIN.JS — Code × Music | Boot Sequence, Nav, Theme
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,11 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Effects from effects.js (loaded before this)
   setTimeout(() => {
     Effects.initCounters();
+    Effects.initWaveform();
+    Effects.initGuitarStrings();
   }, 100);
 });
 
 /* ============================================================
-   BOOT SEQUENCE
+   BOOT SEQUENCE (SOUNDCHECK)
    ============================================================ */
 function initBootSequence() {
   const bootScreen = document.getElementById('boot-screen');
@@ -25,9 +27,19 @@ function initBootSequence() {
 
   const lines = bootScreen.querySelectorAll('.boot-line');
   const progressFill = bootScreen.querySelector('.boot-progress-fill');
+  const vuMeter = document.getElementById('boot-vu');
   const totalLines = lines.length;
   let currentLine = 0;
-  const lineDelay = 180; // ms between lines
+  const lineDelay = 150; // ms between lines
+
+  // Generate fake VU meter bars
+  if (vuMeter) {
+    for (let i = 0; i < 20; i++) {
+      const bar = document.createElement('div');
+      bar.className = 'boot-vu-bar';
+      vuMeter.appendChild(bar);
+    }
+  }
 
   function showNextLine() {
     if (currentLine < totalLines) {
@@ -39,13 +51,25 @@ function initBootSequence() {
         progressFill.style.width = progress + '%';
       }
 
+      // Animate VU meter
+      if (vuMeter) {
+        const bars = vuMeter.querySelectorAll('.boot-vu-bar');
+        bars.forEach((bar, index) => {
+          const height = Math.random() * 100;
+          bar.style.height = `${height}%`;
+          
+          bar.classList.remove('hot', 'peak');
+          if (height > 75) bar.classList.add('hot');
+          if (height > 90) bar.classList.add('peak');
+        });
+      }
+
       currentLine++;
       setTimeout(showNextLine, lineDelay);
     } else {
       // All lines shown — wait a beat then hide boot screen
       setTimeout(() => {
         bootScreen.classList.add('hide');
-        // Start hero animations after boot
         setTimeout(animateHero, 300);
       }, 600);
     }
@@ -63,10 +87,11 @@ function animateHero() {
 
   const greeting = document.querySelector('.hero-greeting');
   const name = document.querySelector('.hero-name');
+  const tagline = document.querySelector('.hero-tagline');
   const subtitle = document.querySelector('.hero-subtitle');
   const actions = document.querySelector('.hero-actions');
 
-  const elements = [greeting, name, subtitle, actions].filter(Boolean);
+  const elements = [greeting, name, tagline, subtitle, actions].filter(Boolean);
 
   elements.forEach((el, i) => {
     setTimeout(() => {
@@ -80,13 +105,13 @@ function animateHero() {
     const subtitleEl = document.getElementById('typed-subtitle');
     if (subtitleEl) {
       Effects.initTypewriter(subtitleEl, [
-        'Full Stack Developer',
-        'Building things for the web',
-        'Open Source Enthusiast',
-        'Problem Solver'
+        'Full Stack Software Engineer',
+        'System Architect',
+        'Creative Coder',
+        'Audio/Visual Explorer'
       ], 70, 35, 2200);
     }
-  }, 800);
+  }, 1000);
 }
 
 /* ============================================================
@@ -114,8 +139,7 @@ function initCustomCursor() {
   }
   updateCursor();
 
-  // Expand on interactive elements
-  const interactives = document.querySelectorAll('a, button, .nav-link, .project-card, .skill-chip, .social-link, .btn-primary, .btn-secondary');
+  const interactives = document.querySelectorAll('a, button, .nav-link, .project-card, .skill-chip, .social-link, .btn-primary, .btn-secondary, .string-divider');
   interactives.forEach(el => {
     el.addEventListener('mouseenter', () => cursor.classList.add('active'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
@@ -158,7 +182,6 @@ function initNavigation() {
 
   let lastScroll = 0;
 
-  // Hide/show on scroll
   window.addEventListener('scroll', () => {
     const currentScroll = window.scrollY;
 
@@ -169,8 +192,6 @@ function initNavigation() {
     }
 
     lastScroll = currentScroll;
-
-    // Update active link
     updateActiveNav();
   });
 }
@@ -209,7 +230,6 @@ function initMobileMenu() {
     hamburger.classList.toggle('open');
   });
 
-  // Close on link click
   mobileMenu.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu.classList.remove('open');

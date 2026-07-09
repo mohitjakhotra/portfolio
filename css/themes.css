@@ -1,0 +1,72 @@
+/* ============================================================
+   THEMES.CSS — Light/Dark Mode CSS Custom Properties
+   ============================================================ */
+
+:root {
+  /* Dark mode (default) */
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: #1a1a28;
+  --bg-card-hover: #22223a;
+  --bg-overlay: rgba(10, 10, 15, 0.92);
+
+  --text-primary: #e8e8f0;
+  --text-secondary: #9898b0;
+  --text-muted: #5a5a78;
+
+  --accent-green: #00ff88;
+  --accent-coral: #ff6b6b;
+  --accent-purple: #6c63ff;
+  --accent-cyan: #00d4ff;
+  --accent-yellow: #ffd93d;
+
+  --border-color: #2a2a40;
+  --border-strong: #e8e8f0;
+
+  --shadow-neo: 6px 6px 0px 0px var(--accent-green);
+  --shadow-neo-sm: 4px 4px 0px 0px var(--accent-green);
+  --shadow-neo-coral: 6px 6px 0px 0px var(--accent-coral);
+  --shadow-neo-purple: 6px 6px 0px 0px var(--accent-purple);
+
+  --noise-opacity: 0.04;
+  --cursor-color: var(--accent-green);
+  --terminal-glow: 0 0 20px rgba(0, 255, 136, 0.15);
+
+  --transition-theme: background-color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                      color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                      border-color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                      box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================================================
+   LIGHT MODE
+   ============================================================ */
+body.light-mode {
+  --bg-primary: #f0f0e8;
+  --bg-secondary: #e8e8df;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8f8f2;
+  --bg-overlay: rgba(240, 240, 232, 0.92);
+
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a4a68;
+  --text-muted: #8a8aa0;
+
+  --accent-green: #00c96a;
+  --accent-coral: #e84855;
+  --accent-purple: #5a52e0;
+  --accent-cyan: #0099cc;
+  --accent-yellow: #e6b800;
+
+  --border-color: #d0d0c8;
+  --border-strong: #1a1a2e;
+
+  --shadow-neo: 6px 6px 0px 0px var(--border-strong);
+  --shadow-neo-sm: 4px 4px 0px 0px var(--border-strong);
+  --shadow-neo-coral: 6px 6px 0px 0px var(--accent-coral);
+  --shadow-neo-purple: 6px 6px 0px 0px var(--accent-purple);
+
+  --noise-opacity: 0.03;
+  --cursor-color: var(--accent-purple);
+  --terminal-glow: 0 0 20px rgba(90, 82, 224, 0.1);
+}

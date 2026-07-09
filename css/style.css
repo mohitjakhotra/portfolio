@@ -164,7 +164,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .boot-line.visible {
-  animation: boot-line-appear 0.15s ease forwards;
+  animation: boot-line-appear 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .boot-line .comment { color: #4a4a62; }
@@ -202,15 +202,8 @@ h1, h2, h3, h4, h5, h6 {
   width: 4px;
   background: var(--accent-signal);
   border-radius: 1px;
-  transition: height 0.2s ease;
-}
-
-.boot-vu-bar.hot {
-  background: var(--accent-warmth);
-}
-
-.boot-vu-bar.peak {
-  background: var(--accent-redline);
+  animation: boot-vu-bounce 0.8s ease-in-out infinite alternate;
+  will-change: height, background;
 }
 
 /* ============================================================

@@ -30,13 +30,16 @@ function initBootSequence() {
   const vuMeter = document.getElementById('boot-vu');
   const totalLines = lines.length;
   let currentLine = 0;
-  const lineDelay = 150; // ms between lines
+  const lineDelay = 400; // ms between lines
 
-  // Generate fake VU meter bars
   if (vuMeter) {
     for (let i = 0; i < 20; i++) {
       const bar = document.createElement('div');
       bar.className = 'boot-vu-bar';
+      const delay = Math.random() * 0.8;
+      const duration = 0.5 + Math.random() * 0.5;
+      bar.style.animationDelay = `${delay}s`;
+      bar.style.animationDuration = `${duration}s`;
       vuMeter.appendChild(bar);
     }
   }
@@ -51,18 +54,7 @@ function initBootSequence() {
         progressFill.style.width = progress + '%';
       }
 
-      // Animate VU meter
-      if (vuMeter) {
-        const bars = vuMeter.querySelectorAll('.boot-vu-bar');
-        bars.forEach((bar, index) => {
-          const height = Math.random() * 100;
-          bar.style.height = `${height}%`;
-          
-          bar.classList.remove('hot', 'peak');
-          if (height > 75) bar.classList.add('hot');
-          if (height > 90) bar.classList.add('peak');
-        });
-      }
+      // VU meter is now animated smoothly via CSS keyframes
 
       currentLine++;
       setTimeout(showNextLine, lineDelay);

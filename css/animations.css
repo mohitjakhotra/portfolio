@@ -171,3 +171,12 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+/* --- Boot VU Meter Smooth Bounce --- */
+@keyframes boot-vu-bounce {
+  0% { height: 10%; background: var(--accent-signal); }
+  30% { height: 70%; background: var(--accent-signal); }
+  50% { height: 95%; background: var(--accent-redline); }
+  70% { height: 50%; background: var(--accent-warmth); }
+  100% { height: 15%; background: var(--accent-signal); }
+}

@@ -121,12 +121,11 @@ function initCustomCursor() {
     mouseY = e.clientY;
   });
 
-  // Smooth follow with lerp
+  // Smooth follow with lerp — use transform for GPU-accelerated positioning
   function updateCursor() {
-    cursorX += (mouseX - cursorX) * 0.15;
-    cursorY += (mouseY - cursorY) * 0.15;
-    cursor.style.left = cursorX + 'px';
-    cursor.style.top = cursorY + 'px';
+    cursorX += (mouseX - cursorX) * 0.35;
+    cursorY += (mouseY - cursorY) * 0.35;
+    cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) translate(-50%, -50%)`;
     requestAnimationFrame(updateCursor);
   }
   updateCursor();

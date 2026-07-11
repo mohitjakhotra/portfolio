@@ -146,15 +146,18 @@ function initThemeToggle() {
 
   // Check saved preference
   const savedTheme = localStorage.getItem('portfolio-theme');
-  if (savedTheme === 'light') {
-    document.body.classList.add('light-mode');
+  
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    updateThemeIcon(false);
+  } else {
     updateThemeIcon(true);
   }
 
   toggleBtn.addEventListener('click', () => {
-    const isLight = document.body.classList.toggle('light-mode');
-    localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
-    updateThemeIcon(isLight);
+    const isDark = document.body.classList.toggle('dark-mode');
+    localStorage.setItem('portfolio-theme', isDark ? 'dark' : 'light');
+    updateThemeIcon(!isDark);
   });
 }
 

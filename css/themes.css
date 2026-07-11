@@ -3,50 +3,7 @@
    ============================================================ */
 
 :root {
-  /* Dark mode (default) — Digital Audio Workstation vibe */
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #111118;
-  --bg-card: #16161f;
-  --bg-card-hover: #1e1e2a;
-  --bg-overlay: rgba(10, 10, 15, 0.92);
-
-  --text-primary: #e8e8f0;
-  --text-secondary: #8888a0;
-  --text-muted: #4a4a62;
-
-  /* Signal colors — inspired by studio gear LEDs */
-  --accent-signal: #00ff88;        /* Signal green — primary accent */
-  --accent-warmth: #f0a050;        /* Warm amber — tube amp glow */
-  --accent-redline: #ff4444;       /* Redline — VU meter peak */
-  --accent-blue: #0088ff;          /* Electric blue — digital signal */
-  --accent-purple: #7c6cff;       /* Electric purple — creative spark */
-
-  --border-color: #1e1e30;
-  --border-strong: #e8e8f0;
-
-  --shadow-neo: 6px 6px 0px 0px var(--accent-signal);
-  --shadow-neo-sm: 4px 4px 0px 0px var(--accent-signal);
-  --shadow-neo-warm: 6px 6px 0px 0px var(--accent-warmth);
-  --shadow-neo-blue: 6px 6px 0px 0px var(--accent-blue);
-
-  --noise-opacity: 0.035;
-  --cursor-color: var(--accent-signal);
-
-  --waveform-color: rgba(0, 255, 136, 0.12);
-  --waveform-stroke: rgba(0, 255, 136, 0.35);
-  --eq-bar-glow: rgba(0, 255, 136, 0.25);
-  --string-color: rgba(255, 255, 255, 0.08);
-
-  --transition-theme: background-color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-                      color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-                      border-color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-                      box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* ============================================================
-   LIGHT MODE — Warm studio daylight
-   ============================================================ */
-body.light-mode {
+  /* LIGHT MODE (Default) — Warm studio daylight */
   --bg-primary: #f5f3ee;
   --bg-secondary: #ebe8e2;
   --bg-card: #ffffff;
@@ -78,4 +35,47 @@ body.light-mode {
   --waveform-stroke: rgba(0, 102, 204, 0.2);
   --eq-bar-glow: rgba(0, 179, 102, 0.15);
   --string-color: rgba(0, 0, 0, 0.06);
+
+  --transition-theme: background-color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                      color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                      border-color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                      box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================================================
+   DARK MODE — Digital Audio Workstation vibe
+   ============================================================ */
+body.dark-mode {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #111118;
+  --bg-card: #16161f;
+  --bg-card-hover: #1e1e2a;
+  --bg-overlay: rgba(10, 10, 15, 0.92);
+
+  --text-primary: #e8e8f0;
+  --text-secondary: #8888a0;
+  --text-muted: #4a4a62;
+
+  /* Signal colors — inspired by studio gear LEDs */
+  --accent-signal: #00ff88;
+  --accent-warmth: #f0a050;
+  --accent-redline: #ff4444;
+  --accent-blue: #0088ff;
+  --accent-purple: #7c6cff;
+
+  --border-color: #1e1e30;
+  --border-strong: #e8e8f0;
+
+  --shadow-neo: 6px 6px 0px 0px var(--accent-signal);
+  --shadow-neo-sm: 4px 4px 0px 0px var(--accent-signal);
+  --shadow-neo-warm: 6px 6px 0px 0px var(--accent-warmth);
+  --shadow-neo-blue: 6px 6px 0px 0px var(--accent-blue);
+
+  --noise-opacity: 0.035;
+  --cursor-color: var(--accent-signal);
+
+  --waveform-color: rgba(0, 255, 136, 0.12);
+  --waveform-stroke: rgba(0, 255, 136, 0.35);
+  --eq-bar-glow: rgba(0, 255, 136, 0.25);
+  --string-color: rgba(255, 255, 255, 0.08);
 }

@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initScrollReveal();
   initMobileMenu();
+  initContactForm();
 
   // Effects from effects.js (loaded before this)
   setTimeout(() => {
@@ -19,59 +20,82 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ============================================================
-   BOOT SEQUENCE (SOUNDCHECK)
+   BOOT SEQUENCE (CRT TURN-ON + LOADER + SIGNAL)
    ============================================================ */
 function initBootSequence() {
   const bootScreen = document.getElementById('boot-screen');
   if (!bootScreen) return;
 
-  const lines = bootScreen.querySelectorAll('.boot-line');
-  const progressFill = bootScreen.querySelector('.boot-progress-fill');
-  const vuMeter = document.getElementById('boot-vu');
-  const totalLines = lines.length;
-  let currentLine = 0;
-  const lineDelay = 400; // ms between lines
-
-  if (vuMeter) {
-    for (let i = 0; i < 20; i++) {
-      const bar = document.createElement('div');
-      bar.className = 'boot-vu-bar';
-      const delay = Math.random() * 0.8;
-      const duration = 0.5 + Math.random() * 0.5;
-      bar.style.animationDelay = `${delay}s`;
-      bar.style.animationDuration = `${duration}s`;
-      vuMeter.appendChild(bar);
-    }
-  }
-
-  function showNextLine() {
-    if (currentLine < totalLines) {
-      lines[currentLine].classList.add('visible');
-
-      // Update progress bar
-      const progress = ((currentLine + 1) / totalLines) * 100;
-      if (progressFill) {
-        progressFill.style.width = progress + '%';
-      }
-
-      // VU meter is now animated smoothly via CSS keyframes
-
-      currentLine++;
-      setTimeout(showNextLine, lineDelay);
-    } else {
-      // All lines shown — wait a beat then hide boot screen
-      setTimeout(() => {
-        bootScreen.classList.add('hide');
-        setTimeout(animateHero, 300);
-      }, 600);
-    }
-  }
+  const percentEl = document.getElementById('loader-percent');
+  const fillEl = document.getElementById('loader-fill');
+  const staticEl = document.getElementById('signal-static');
+  const scanlinesEl = document.getElementById('signal-scanlines');
 
   // Block scroll during boot
   document.body.style.overflow = 'hidden';
 
-  // Start the sequence
-  setTimeout(showNextLine, 400);
+  let progress = 0;
+
+  // ---- PHASE 1: Progress bar fills with glitchy stuttering ----
+  function updateProgress() {
+    const increment = Math.floor(Math.random() * 12) + 2;
+    progress += increment;
+    if (progress > 100) progress = 100;
+
+    if (percentEl) percentEl.textContent = progress;
+    if (fillEl) fillEl.style.width = progress + '%';
+
+    if (progress < 100) {
+      const delay = Math.floor(Math.random() * 200) + 80;
+      setTimeout(updateProgress, delay);
+    } else {
+      // Progress done — start signal phase after a beat
+      setTimeout(startSignalPhase, 500);
+    }
+  }
+
+  // ---- PHASE 2: Poor signal — gentle static, scanlines, slight wobble ----
+  function startSignalPhase() {
+    // Make background transparent so page shows through the noise
+    bootScreen.style.backgroundColor = 'transparent';
+
+    // Activate the static noise and scanlines
+    if (staticEl) staticEl.classList.add('active');
+    if (scanlinesEl) scanlinesEl.classList.add('active');
+
+    // Add gentle wobble + flicker to the overlay
+    bootScreen.classList.add('signal-phase');
+
+    // Let the poor signal play for a moment, then start clearing
+    setTimeout(startSignalClearing, 1200);
+  }
+
+  // ---- PHASE 3: Signal gradually clears up ----
+  function startSignalClearing() {
+    bootScreen.classList.remove('signal-phase');
+    bootScreen.classList.add('signal-clearing');
+
+    // Transition static and scanlines to weakening (smooth fade)
+    if (staticEl) {
+      staticEl.classList.remove('active');
+      staticEl.classList.add('weakening');
+    }
+    if (scanlinesEl) {
+      scanlinesEl.classList.remove('active');
+      scanlinesEl.classList.add('weakening');
+    }
+
+    // Start hero animations while signal is still fading
+    setTimeout(animateHero, 600);
+
+    // After fade-out completes, clean up the overlay
+    setTimeout(() => {
+      bootScreen.classList.add('done');
+    }, 2800);
+  }
+
+  // Start it all
+  setTimeout(updateProgress, 300);
 }
 
 function animateHero() {
@@ -146,7 +170,7 @@ function initThemeToggle() {
 
   // Check saved preference
   const savedTheme = localStorage.getItem('portfolio-theme');
-  
+
   if (savedTheme === 'dark') {
     document.body.classList.add('dark-mode');
     updateThemeIcon(false);
@@ -229,6 +253,72 @@ function initMobileMenu() {
       mobileMenu.classList.remove('open');
       hamburger.classList.remove('open');
     });
+  });
+}
+
+/* ============================================================
+   CONTACT FORM (AJAX Submission)
+   ============================================================ */
+function initContactForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  // IMPORTANT: Replace this with your Web3Forms access key
+  // You can get one for free in 10 seconds at https://web3forms.com/
+  const WEB3FORMS_ACCESS_KEY = "e4ec6749-45d7-4156-a85f-8a9f94522239";
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('contact-name').value;
+    const email = document.getElementById('contact-email').value;
+    const message = document.getElementById('contact-message').value;
+
+    const btn = this.querySelector('.form-submit');
+    const originalText = btn.innerHTML;
+
+    // Disable button and show loading state
+    btn.disabled = true;
+    btn.innerHTML = `<i class='bx bx-loader-alt bx-spin'></i> Transmitting...`;
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: name,
+          email: email,
+          message: message,
+          subject: 'New message from Portfolio: ' + name
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.status === 200) {
+        // Success
+        btn.innerHTML = `<i class='bx bx-check'></i> Signal Transmitted!`;
+        form.reset();
+      } else {
+        // Error from API
+        console.error(result);
+        btn.innerHTML = `<i class='bx bx-error'></i> Signal Failed`;
+      }
+    } catch (error) {
+      // Network error
+      console.error(error);
+      btn.innerHTML = `<i class='bx bx-wifi-off'></i> Connection Error`;
+    }
+
+    // Reset button after 3 seconds
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+    }, 3000);
   });
 }
 

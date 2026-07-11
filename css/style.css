@@ -134,77 +134,167 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================================
-   BOOT / SOUNDCHECK SCREEN
+   CRT TV TURN-ON + LOADER SCREEN
    ============================================================ */
-.boot-screen {
+.crt-overlay {
   position: fixed;
   inset: 0;
   background-color: #050508;
   z-index: 10000;
+  pointer-events: all;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding: 10vw;
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--accent-signal);
-  font-size: clamp(0.7rem, 1.4vw, 0.95rem);
   overflow: hidden;
-  transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
-.boot-screen.hide {
+.minimal-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  z-index: 10003;
+  transition: opacity 0.3s ease;
+}
+
+.loader-text {
+  color: var(--accent-signal);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+}
+
+.loader-bar {
+  width: 250px;
+  height: 2px;
+  background-color: #1e1e30;
+  position: relative;
+  overflow: hidden;
+}
+
+.loader-fill {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 0%;
+  background-color: var(--accent-signal);
+  box-shadow: 0 0 10px var(--accent-signal);
+  transition: width 0.1s linear;
+}
+
+/* --- Signal Static (snow/grain noise) --- */
+.signal-static {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: 10001;
   opacity: 0;
+  pointer-events: none;
+  background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23n)"/%3E%3C/svg%3E');
+  mix-blend-mode: overlay;
+}
+
+.signal-static.active {
+  opacity: 0.5;
+  animation: signal-snow 0.3s steps(3) infinite;
+}
+
+.signal-static.weakening {
+  animation: signal-snow 0.3s steps(3) infinite, signal-fade-out 2.5s ease-out forwards;
+}
+
+/* --- Signal Scanlines (subtle horizontal bands) --- */
+.signal-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 10002;
+  opacity: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.15) 3px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+}
+
+.signal-scanlines.active {
+  opacity: 0.7;
+}
+
+.signal-scanlines.weakening {
+  animation: signal-fade-out 2.5s ease-out forwards;
+}
+
+/* --- Gentle screen wobble during poor signal --- */
+.crt-overlay.signal-phase {
+  animation: screen-jitter 0.2s ease infinite;
+}
+
+.crt-overlay.signal-phase .minimal-loader {
+  opacity: 0;
+}
+
+/* Make the bg transparent so the site shows through */
+.crt-overlay.signal-clearing {
+  background-color: transparent;
+  animation: none;
+}
+
+/* Subtle dim flicker during poor signal */
+.crt-overlay.signal-phase::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 10000;
+  animation: screen-flicker 0.5s ease infinite;
+  background-color: #050508;
+  opacity: 0.15;
+}
+
+.crt-overlay.signal-clearing::after {
+  animation: signal-fade-out 2s ease-out forwards;
+}
+
+/* --- No harsh white flash — just a soft fade --- */
+.crt-overlay::before {
+  display: none;
+}
+
+/* Final hide */
+.crt-overlay.done {
   visibility: hidden;
   pointer-events: none;
 }
 
-.boot-line {
-  opacity: 0;
-  margin-bottom: 6px;
-  white-space: nowrap;
+/* ---- Keyframes ---- */
+@keyframes signal-snow {
+  0%   { transform: translate(0, 0); }
+  33%  { transform: translate(-2%, -4%); }
+  66%  { transform: translate(2%, 2%); }
+  100% { transform: translate(-1%, 3%); }
 }
 
-.boot-line.visible {
-  animation: boot-line-appear 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+@keyframes screen-jitter {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-0.5px, 0.5px); }
+  50%  { transform: translate(0.5px, -0.5px); }
+  75%  { transform: translate(0.5px, 0px); }
+  100% { transform: translate(0, 0); }
 }
 
-.boot-line .comment { color: #4a4a62; }
-.boot-line .keyword { color: var(--accent-warmth); }
-.boot-line .string { color: var(--accent-signal); }
-.boot-line .fn { color: var(--accent-blue); }
-
-.boot-progress-bar {
-  margin-top: 20px;
-  height: 4px;
-  width: 100%;
-  max-width: 400px;
-  background: #1a1a28;
-  border: 1px solid #2a2a40;
-  overflow: hidden;
+@keyframes screen-flicker {
+  0%   { opacity: 0.15; }
+  30%  { opacity: 0.05; }
+  50%  { opacity: 0.1; }
+  70%  { opacity: 0.0; }
+  100% { opacity: 0.12; }
 }
 
-.boot-progress-fill {
-  height: 100%;
-  width: 0;
-  background: linear-gradient(90deg, var(--accent-signal), var(--accent-blue));
-  transition: width 0.3s ease;
-}
-
-/* --- VU Meter (boot screen decoration) --- */
-.boot-vu-meter {
-  display: flex;
-  gap: 3px;
-  margin-top: 16px;
-  align-items: flex-end;
-  height: 30px;
-}
-
-.boot-vu-bar {
-  width: 4px;
-  background: var(--accent-signal);
-  border-radius: 1px;
-  animation: boot-vu-bounce 0.8s ease-in-out infinite alternate;
-  will-change: height, background;
+@keyframes signal-fade-out {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 /* ============================================================

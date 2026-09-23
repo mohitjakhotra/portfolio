@@ -1,81 +1,33 @@
-/* ============================================================
-   THEMES.CSS — Code × Music | Waveform Minimalist Palette
-   ============================================================ */
-
 :root {
-  /* LIGHT MODE (Default) — Warm studio daylight */
-  --bg-primary: #f5f3ee;
-  --bg-secondary: #ebe8e2;
+  --bg-primary: #fbfbfd;
+  --bg-secondary: #f5f5f7;
   --bg-card: #ffffff;
-  --bg-card-hover: #f9f8f5;
-  --bg-overlay: rgba(245, 243, 238, 0.92);
+  --bg-overlay: rgba(251, 251, 253, 0.8);
 
-  --text-primary: #1a1a2e;
-  --text-secondary: #4a4a68;
-  --text-muted: #8a8aa0;
+  --text-primary: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --text-muted: #86868b;
 
-  --accent-signal: #00b366;
-  --accent-warmth: #d48820;
-  --accent-redline: #cc3333;
-  --accent-blue: #0066cc;
-  --accent-purple: #5a4fd4;
+  --accent: #0071e3;
+  --accent-contrast: #ffffff;
 
-  --border-color: #d8d4cc;
-  --border-strong: #1a1a2e;
+  --border-color: rgba(0, 0, 0, 0.08);
 
-  --shadow-neo: 6px 6px 0px 0px var(--border-strong);
-  --shadow-neo-sm: 4px 4px 0px 0px var(--border-strong);
-  --shadow-neo-warm: 6px 6px 0px 0px var(--accent-warmth);
-  --shadow-neo-blue: 6px 6px 0px 0px var(--accent-blue);
-
-  --noise-opacity: 0.025;
-  --cursor-color: var(--accent-purple);
-
-  --waveform-color: rgba(0, 102, 204, 0.08);
-  --waveform-stroke: rgba(0, 102, 204, 0.2);
-  --eq-bar-glow: rgba(0, 179, 102, 0.15);
-  --string-color: rgba(0, 0, 0, 0.06);
-
-  --transition-theme: background-color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-                      color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-                      border-color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-                      box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-theme: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* ============================================================
-   DARK MODE — Digital Audio Workstation vibe
-   ============================================================ */
 body.dark-mode {
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #111118;
-  --bg-card: #16161f;
-  --bg-card-hover: #1e1e2a;
-  --bg-overlay: rgba(10, 10, 15, 0.92);
+  --bg-primary: #000000;
+  --bg-secondary: #161617;
+  --bg-card: #1d1d1f;
+  --bg-overlay: rgba(0, 0, 0, 0.72);
 
-  --text-primary: #e8e8f0;
-  --text-secondary: #8888a0;
-  --text-muted: #4a4a62;
+  --text-primary: #f5f5f7;
+  --text-secondary: #a1a1a6;
+  --text-muted: #86868b;
 
-  /* Signal colors — inspired by studio gear LEDs */
-  --accent-signal: #00ff88;
-  --accent-warmth: #f0a050;
-  --accent-redline: #ff4444;
-  --accent-blue: #0088ff;
-  --accent-purple: #7c6cff;
+  --accent: #2997ff;
+  --accent-contrast: #000000;
 
-  --border-color: #1e1e30;
-  --border-strong: #e8e8f0;
-
-  --shadow-neo: 6px 6px 0px 0px var(--accent-signal);
-  --shadow-neo-sm: 4px 4px 0px 0px var(--accent-signal);
-  --shadow-neo-warm: 6px 6px 0px 0px var(--accent-warmth);
-  --shadow-neo-blue: 6px 6px 0px 0px var(--accent-blue);
-
-  --noise-opacity: 0.035;
-  --cursor-color: var(--accent-signal);
-
-  --waveform-color: rgba(0, 255, 136, 0.12);
-  --waveform-stroke: rgba(0, 255, 136, 0.35);
-  --eq-bar-glow: rgba(0, 255, 136, 0.25);
-  --string-color: rgba(255, 255, 255, 0.08);
+  --border-color: rgba(255, 255, 255, 0.12);
 }

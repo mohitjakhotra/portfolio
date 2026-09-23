@@ -4,563 +4,253 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohit Jakhotra | Code & Chords</title>
-  <meta name="title" content="Mohit Jakhotra | Developer & Musician">
-  <meta name="description" content="Personal portfolio of Mohit Jakhotra — Software Engineer and Guitarist. Code is composition.">
+  <title>Mohit Jakhotra | Software Engineer</title>
+  <meta name="title" content="Mohit Jakhotra | Software Engineer">
+  <meta name="description" content="Personal portfolio of Mohit Jakhotra, a full-stack software engineer. Enterprise systems, Kafka, and cloud architecture.">
   <meta name="author" content="Mohit Jakhotra">
-  <meta name="keywords" content="mohit jakhotra, developer, portfolio, full stack, software engineer, musician, guitarist">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Mohit Jakhotra | Code & Chords">
-  <meta property="og:description" content="Personal portfolio of Mohit Jakhotra — Software Engineer and Guitarist. Code is composition.">
+  <meta property="og:title" content="Mohit Jakhotra | Software Engineer">
+  <meta property="og:description" content="Personal portfolio of Mohit Jakhotra, a full-stack software engineer. Enterprise systems, Kafka, and cloud architecture.">
 
-  <link rel="dns-prefetch" href="https://unpkg.com">
-  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Icons -->
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-
-  <!-- Styles -->
   <link rel="stylesheet" href="css/themes.css">
-  <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-  <!-- ==================== CRT TV TURN-ON + LOADER ==================== -->
-  <div id="boot-screen" class="crt-overlay">
-    <div class="minimal-loader" id="minimal-loader">
-      <div class="loader-text font-mono">WARMING UP TUBES... [ <span id="loader-percent">0</span>% ]</div>
-      <div class="loader-bar">
-        <div class="loader-fill" id="loader-fill"></div>
-      </div>
-    </div>
-    <!-- Static/noise overlay for poor signal phase -->
-    <div class="signal-static" id="signal-static"></div>
-    <div class="signal-scanlines" id="signal-scanlines"></div>
-  </div>
-
-  <!-- ==================== NOISE + SCAN LINE ==================== -->
-  <div class="noise-overlay" aria-hidden="true"></div>
-  <div class="scan-line" aria-hidden="true"></div>
-
-  <!-- ==================== CUSTOM CURSOR ==================== -->
-  <div class="custom-cursor" aria-hidden="true"></div>
-
-  <!-- ==================== NAVIGATION ==================== -->
-  <nav class="navbar" id="navbar">
+  <header class="site-header">
     <div class="nav-inner">
-      <a href="#hero" class="nav-logo">
-        <span class="brace">{</span> MJ <span class="brace">}</span>
-        <div class="nav-led"></div>
-      </a>
+      <a href="#hero" class="nav-logo">MJ</a>
 
-      <div class="nav-links">
-        <a href="#about" class="nav-link">about</a>
-        <a href="#skills" class="nav-link">repertoire</a>
-        <a href="#projects" class="nav-link">compositions</a>
-        <a href="#experience" class="nav-link">sessions</a>
-        <a href="#contact" class="nav-cta">patch_cable()</a>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-          <i class='bx bx-sun'></i>
-        </button>
-      </div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Menu</span>
+      </button>
 
-      <button id="nav-hamburger" class="nav-hamburger" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
+      <nav id="site-nav" class="site-nav">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="theme-toggle" type="button" aria-label="Toggle color theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
       </button>
     </div>
-  </nav>
+  </header>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="mobile-menu">
-    <a href="#about" class="nav-link">about</a>
-    <a href="#skills" class="nav-link">repertoire</a>
-    <a href="#projects" class="nav-link">compositions</a>
-    <a href="#experience" class="nav-link">sessions</a>
-    <a href="#contact" class="nav-link">contact</a>
-    <button id="theme-toggle-mobile" class="theme-toggle" aria-label="Toggle theme" onclick="document.getElementById('theme-toggle').click()">
-      <i class='bx bx-sun'></i>
-    </button>
-  </div>
-
-  <!-- ==================== HERO SECTION ==================== -->
   <section id="hero" class="hero section">
-    <canvas id="waveform-canvas" class="waveform-canvas"></canvas>
-    
     <div class="container">
       <div class="hero-content">
-        <p class="hero-greeting font-mono">
-          <span class="wave">♪</span> Signal Acquired
-        </p>
-
-        <h1 class="hero-name font-heading">
-          <span class="glitch-text" data-text="Mohit">Mohit</span><br>
-          <span class="hero-title-line2 glitch-text" data-text="Jakhotra">Jakhotra</span>
-        </h1>
-
-        <p class="hero-tagline">
-          "I architect systems and play guitar. Self-taught in both."
-        </p>
-
-        <div class="hero-subtitle">
-          <span id="typed-subtitle"></span>
-        </div>
-
+        <p class="hero-kicker">Software Engineer</p>
+        <h1 class="hero-name">Mohit Jakhotra</h1>
+        <p class="hero-tagline">I architect systems and play guitar. Self-taught in both.</p>
         <div class="hero-actions">
-          <a href="#projects" class="btn-primary">
-            <i class='bx bx-play-circle'></i> Play Tracks
-          </a>
-          <a href="#contact" class="btn-secondary">
-            <i class='bx bx-microphone'></i> Mic Check
-          </a>
+          <a href="#projects" class="btn-primary">View work</a>
+          <a href="#contact" class="btn-secondary">Get in touch</a>
         </div>
       </div>
     </div>
-
-    <!-- Scroll indicator -->
-    <div class="hero-scroll-indicator">
-      <div class="scroll-arrow"></div>
-      <span>tune in</span>
-    </div>
   </section>
 
-  <!-- ==================== ABOUT SECTION ==================== -->
   <section id="about" class="section">
     <div class="container">
-      <div class="section-label reveal">about_me</div>
-      <h2 class="section-title reveal reveal-delay-1">
-        Code <span class="accent">&amp;</span> Chords
-      </h2>
-
-      <div class="about-grid">
-        <!-- Terminal Card -->
-        <div class="about-terminal reveal reveal-delay-2">
-          <div class="terminal-header">
-            <div class="terminal-dot red"></div>
-            <div class="terminal-dot yellow"></div>
-            <div class="terminal-dot green"></div>
-            <span class="terminal-title">profile.sh</span>
-          </div>
-          <div class="terminal-body">
-            <span class="prompt">$ whoami</span>
-            <span class="output">
-              Full-stack software engineer with 2+ years of experience building enterprise-grade applications. Passionate about Kafka ecosystems and cloud architectures. Still a self-taught guitarist at heart.
-            </span>
-            <span class="prompt">$ cat philosophy.txt</span>
-            <span class="output">
-              Code is composition. Microservices are band members. CI/CD is the rhythm section. I believe in translating complex requirements into production-ready, highly available systems that never miss a beat.
-            </span>
-            <span class="prompt">$ echo $FOCUS</span>
-            <span class="output">
-              Building scalable, multi-tenant distributed systems with the precision of a metronome.
-            </span>
-          </div>
-        </div>
-
-        <!-- Visual Side -->
-        <div class="about-visual reveal reveal-delay-3">
-          <div class="about-photo-frame">
-            <span class="placeholder-avatar">🎸</span>
-          </div>
-
-          <div class="about-info-chips">
-            <div class="info-chip">
-              <i class='bx bx-map'></i> India
-            </div>
-            <div class="info-chip">
-              <i class='bx bx-headphone'></i> Always Listening
-            </div>
-            <div class="info-chip">
-              <i class='bx bx-code-alt'></i> Full Stack
-            </div>
-            <div class="info-chip">
-              <i class='bx bx-music'></i> Musician
-            </div>
-          </div>
-
-          <!-- Stats -->
-          <div class="about-stats">
-            <div class="stat-card">
-              <div class="stat-number" data-count="20" data-suffix="+">0</div>
-              <div class="stat-label">Compositions</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number" data-count="15" data-suffix="+">0</div>
-              <div class="stat-label">Instruments (Tech)</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number" data-count="1000" data-suffix="+">0</div>
-              <div class="stat-label">Commits / Takes</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number" data-count="92" data-suffix="%">0</div>
-              <div class="stat-label">Signal/Noise (Hit Rate)</div>
-            </div>
-          </div>
-        </div>
+      <h2 class="section-title reveal">About</h2>
+      <div class="about-copy reveal">
+        <p>
+          Full-stack software engineer with 4+ years of experience building enterprise applications, including Kafka platforms and cloud architectures. Still a self-taught guitarist.
+        </p>
+        <p>
+          I turn complex requirements into production systems: multi-tenant services, migration workflows, and the tests that keep them reliable.
+        </p>
       </div>
+      <ul class="about-info-chips reveal">
+        <li class="info-chip">India</li>
+        <li class="info-chip">Full stack</li>
+        <li class="info-chip">Guitar</li>
+      </ul>
     </div>
   </section>
 
-  <!-- ==================== STRING DIVIDER ==================== -->
-  <div class="string-divider" aria-hidden="true">
-    <div class="string-node left"></div>
-    <svg class="string-line" preserveAspectRatio="none" viewBox="0 0 100 2">
-      <path d="M 0 1 Q 25 1, 50 1 T 100 1" fill="transparent" stroke="var(--string-color)" stroke-width="0.5" />
-    </svg>
-    <div class="string-node right"></div>
-  </div>
-
-  <!-- ==================== SKILLS / REPERTOIRE SECTION ==================== -->
   <section id="skills" class="section">
     <div class="container">
-      <div class="section-label reveal">technical_repertoire</div>
-      <h2 class="section-title reveal reveal-delay-1">
-        My <span class="accent">Frequencies</span>
-      </h2>
-
+      <h2 class="section-title reveal">Skills</h2>
       <div class="skills-categories">
-        <!-- Frontend (Highs) -->
-        <div class="skill-category reveal reveal-delay-2">
-          <div class="skill-category-freq">High Frequencies (UI/UX)</div>
-          <h3 class="skill-category-title">
-            <i class='bx bx-desktop'></i> Frontend
-          </h3>
-          
-          <div class="eq-visualizer">
-            <div class="eq-bar active" style="--eq-height: 80%; --eq-delay: 0.1s;"></div>
-            <div class="eq-bar active" style="--eq-height: 60%; --eq-delay: 0.5s;"></div>
-            <div class="eq-bar active" style="--eq-height: 90%; --eq-delay: 0.2s;"></div>
-            <div class="eq-bar active" style="--eq-height: 70%; --eq-delay: 0.8s;"></div>
-            <div class="eq-bar active" style="--eq-height: 50%; --eq-delay: 0.4s;"></div>
-          </div>
-
-          <div class="skill-chips">
-            <div class="skill-chip"><i class="devicon-react-original"></i> React</div>
-            <div class="skill-chip"><i class="devicon-redux-original"></i> Redux</div>
-            <div class="skill-chip"><i class="devicon-typescript-plain"></i> TypeScript</div>
-            <div class="skill-chip"><i class="devicon-javascript-plain"></i> JavaScript</div>
-            <div class="skill-chip"><i class="devicon-html5-plain"></i> HTML/CSS</div>
-          </div>
+        <div class="skill-category reveal">
+          <h3 class="skill-category-title">Frontend</h3>
+          <ul class="skill-chips">
+            <li class="skill-chip">React</li>
+            <li class="skill-chip">Redux</li>
+            <li class="skill-chip">TypeScript</li>
+            <li class="skill-chip">JavaScript</li>
+            <li class="skill-chip">HTML/CSS</li>
+          </ul>
         </div>
-
-        <!-- Backend (Lows) -->
-        <div class="skill-category reveal reveal-delay-3">
-          <div class="skill-category-freq">Low Frequencies (Data/Logic)</div>
-          <h3 class="skill-category-title">
-            <i class='bx bx-server'></i> Backend
-          </h3>
-          
-          <div class="eq-visualizer">
-            <div class="eq-bar active" style="--eq-height: 75%; --eq-delay: 0.3s;"></div>
-            <div class="eq-bar active" style="--eq-height: 85%; --eq-delay: 0.7s;"></div>
-            <div class="eq-bar active" style="--eq-height: 65%; --eq-delay: 0.1s;"></div>
-            <div class="eq-bar active" style="--eq-height: 95%; --eq-delay: 0.9s;"></div>
-            <div class="eq-bar active" style="--eq-height: 55%; --eq-delay: 0.6s;"></div>
-          </div>
-
-          <div class="skill-chips">
-            <div class="skill-chip"><i class="devicon-nodejs-plain"></i> Node.js</div>
-            <div class="skill-chip"><i class="devicon-express-original"></i> Express</div>
-            <div class="skill-chip"><i class="devicon-python-plain"></i> Python</div>
-            <div class="skill-chip"><i class="devicon-postgresql-plain"></i> PostgreSQL</div>
-            <div class="skill-chip"><i class="devicon-mongodb-plain"></i> MongoDB</div>
-          </div>
+        <div class="skill-category reveal">
+          <h3 class="skill-category-title">Backend</h3>
+          <ul class="skill-chips">
+            <li class="skill-chip">Node.js</li>
+            <li class="skill-chip">Express</li>
+            <li class="skill-chip">Python</li>
+            <li class="skill-chip">PostgreSQL</li>
+            <li class="skill-chip">MongoDB</li>
+          </ul>
         </div>
-
-        <!-- Tools (Mids) -->
-        <div class="skill-category reveal reveal-delay-4">
-          <div class="skill-category-freq">Mid Frequencies (Workflow)</div>
-          <h3 class="skill-category-title">
-            <i class='bx bx-slider-alt'></i> Tools & DevOps
-          </h3>
-          
-          <div class="eq-visualizer">
-            <div class="eq-bar active" style="--eq-height: 90%; --eq-delay: 0.2s;"></div>
-            <div class="eq-bar active" style="--eq-height: 60%; --eq-delay: 0.8s;"></div>
-            <div class="eq-bar active" style="--eq-height: 70%; --eq-delay: 0.5s;"></div>
-            <div class="eq-bar active" style="--eq-height: 80%; --eq-delay: 0.3s;"></div>
-            <div class="eq-bar active" style="--eq-height: 50%; --eq-delay: 0.7s;"></div>
-          </div>
-
-          <div class="skill-chips">
-            <div class="skill-chip"><i class="devicon-apachekafka-original"></i> Kafka</div>
-            <div class="skill-chip"><i class="devicon-docker-plain"></i> Docker</div>
-            <div class="skill-chip"><i class="devicon-azure-plain"></i> Azure</div>
-            <div class="skill-chip"><i class="devicon-githubactions-plain"></i> GitHub Actions</div>
-            <div class="skill-chip"><i class="devicon-jest-plain"></i> Jest</div>
-          </div>
+        <div class="skill-category reveal">
+          <h3 class="skill-category-title">Tools and DevOps</h3>
+          <ul class="skill-chips">
+            <li class="skill-chip">Kafka</li>
+            <li class="skill-chip">Docker</li>
+            <li class="skill-chip">Azure</li>
+            <li class="skill-chip">GitHub Actions</li>
+            <li class="skill-chip">Jest</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== STRING DIVIDER ==================== -->
-  <div class="string-divider" aria-hidden="true">
-    <div class="string-node left"></div>
-    <svg class="string-line" preserveAspectRatio="none" viewBox="0 0 100 2">
-      <path d="M 0 1 Q 25 1, 50 1 T 100 1" fill="transparent" stroke="var(--string-color)" stroke-width="0.5" />
-    </svg>
-    <div class="string-node right"></div>
-  </div>
-
-  <!-- ==================== PROJECTS / COMPOSITIONS SECTION ==================== -->
   <section id="projects" class="section">
     <div class="container">
-      <div class="section-label reveal">selected_compositions</div>
-      <h2 class="section-title reveal reveal-delay-1">
-        Featured <span class="accent">Tracks</span>
-      </h2>
-
+      <h2 class="section-title reveal">Projects</h2>
       <div class="projects-grid">
-        <!-- Project 1 -->
-        <div class="project-card reveal reveal-delay-2">
-          <div class="project-image">
-            <i class='bx bx-network-chart'></i>
-            <span class="track-number">TRACK 01</span>
-          </div>
-          <div class="project-body">
-            <h3 class="project-title">NexDev: Kafka Platform</h3>
-            <p class="project-desc">
-              Enterprise Kafka cluster management platform. Architected a 7-stage migration workflow with zero data loss and an AI-powered documentation chatbot achieving 92% cache efficiency.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">React</span>
-              <span class="project-tag">Node.js</span>
-              <span class="project-tag">Kafka</span>
-              <span class="project-tag">Azure</span>
-            </div>
-            <div class="project-links">
-              <a href="#" class="project-link">
-                <i class='bx bx-lock-alt'></i> Enterprise
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="project-card reveal reveal-delay-3">
-          <div class="project-image">
-            <i class='bx bx-cube-alt'></i>
-            <span class="track-number">TRACK 02</span>
-          </div>
-          <div class="project-body">
-            <h3 class="project-title">Self-Service Portal</h3>
-            <p class="project-desc">
-              Plugin-based enterprise portal for managing Kafka ecosystems using Backstage.io. Implemented CRUD operations via KafkaJS with 80%+ Jest test coverage to ensure reliability.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">React</span>
-              <span class="project-tag">Node.js</span>
-              <span class="project-tag">KafkaJS</span>
-              <span class="project-tag">Jest</span>
-            </div>
-            <div class="project-links">
-              <a href="#" class="project-link">
-                <i class='bx bx-lock-alt'></i> Enterprise
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="project-card reveal reveal-delay-4">
-          <div class="project-image">
-            <i class='bx bx-laptop'></i>
-            <span class="track-number">TRACK 03</span>
-          </div>
-          <div class="project-body">
-            <h3 class="project-title">EduTech MVPs</h3>
-            <p class="project-desc">
-              Developed production web applications for Deepthought EduTech. Built multiple MVPs from scratch, improving UX/UI and implementing responsive design patterns.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">React</span>
-              <span class="project-tag">Node.js</span>
-              <span class="project-tag">JavaScript</span>
-              <span class="project-tag">CSS3</span>
-            </div>
-            <div class="project-links">
-              <a href="#" class="project-link">
-                <i class='bx bx-link-external'></i> Launched
-              </a>
-            </div>
-          </div>
-        </div>
+        <article class="project-card reveal">
+          <h3 class="project-title">NexDev: Kafka Platform</h3>
+          <p class="project-desc">
+            Enterprise Kafka cluster management platform. Architected a 7-stage migration workflow with zero data loss and an AI-powered documentation chatbot achieving 92% cache efficiency.
+          </p>
+          <ul class="project-tags">
+            <li class="project-tag">React</li>
+            <li class="project-tag">Node.js</li>
+            <li class="project-tag">Kafka</li>
+            <li class="project-tag">Azure</li>
+          </ul>
+        </article>
+        <article class="project-card reveal">
+          <h3 class="project-title">Self-Service Portal</h3>
+          <p class="project-desc">
+            Plugin-based enterprise portal for managing Kafka ecosystems using Backstage.io. Implemented CRUD operations via KafkaJS with 80%+ Jest test coverage.
+          </p>
+          <ul class="project-tags">
+            <li class="project-tag">React</li>
+            <li class="project-tag">Node.js</li>
+            <li class="project-tag">KafkaJS</li>
+            <li class="project-tag">Jest</li>
+          </ul>
+        </article>
+        <article class="project-card reveal">
+          <h3 class="project-title">EduTech MVPs</h3>
+          <p class="project-desc">
+            Production web applications for Deepthought EduTech. Built multiple MVPs from scratch and implemented responsive layouts across devices.
+          </p>
+          <ul class="project-tags">
+            <li class="project-tag">React</li>
+            <li class="project-tag">Node.js</li>
+            <li class="project-tag">JavaScript</li>
+            <li class="project-tag">CSS</li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ==================== EXPERIENCE / SESSIONS SECTION ==================== -->
   <section id="experience" class="section">
     <div class="container">
-      <div class="section-label reveal">studio_sessions</div>
-      <h2 class="section-title reveal reveal-delay-1">
-        Where I've <span class="accent">recorded</span>
-      </h2>
-
+      <h2 class="section-title reveal">Experience</h2>
       <div class="timeline">
-        <!-- Experience 1 -->
-        <div class="timeline-item reveal reveal-delay-2">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <span class="timeline-date">Jun 2026 — Present</span>
-            <h3 class="timeline-role">Software Engineer</h3>
-            <p class="timeline-company">@ Lumberfi, Bangalore</p>
-            <ul class="timeline-desc">
-              <li>Building scalable engineering solutions and collaborating with cross-functional teams to design and deploy core features.</li>
-              <li>Bringing my full-stack expertise to craft seamless digital experiences in a fast-paced environment.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Experience 2 -->
-        <div class="timeline-item reveal reveal-delay-3">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <span class="timeline-date">Nov 2023 — May 2026</span>
-            <h3 class="timeline-role">Software Engineer</h3>
-            <p class="timeline-company">@ Intverse.io</p>
-            <ul class="timeline-desc">
-              <li>Led full-stack development for an enterprise-grade Kafka cluster management platform (NexDev).</li>
-              <li>Architected complex migration workflows, multi-tenant models, and provider-agnostic architectures.</li>
-              <li>Developed AI-powered documentation chatbots using RAG architecture and DeepSeek LLMs.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Experience 3 -->
-        <div class="timeline-item reveal reveal-delay-4">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <span class="timeline-date">Jul 2023 — Nov 2023</span>
-            <h3 class="timeline-role">Full-Stack Developer Intern</h3>
-            <p class="timeline-company">@ Intverse.io</p>
-            <ul class="timeline-desc">
-              <li>Contributed to a plugin-based enterprise portal (Backstage.io) for managing Kafka ecosystems.</li>
-              <li>Implemented CRUD operations and APIs using KafkaJS to simplify operational complexity.</li>
-              <li>Wrote comprehensive unit and integration tests using Jest, achieving 80%+ code coverage.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Experience 4 -->
-        <div class="timeline-item reveal reveal-delay-5">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <span class="timeline-date">Jun 2022 — Jul 2023</span>
-            <h3 class="timeline-role">Front-End Engineer</h3>
-            <p class="timeline-company">@ Deepthought EduTech</p>
-            <ul class="timeline-desc">
-              <li>Developed and maintained production web applications using React and Node.js.</li>
-              <li>Built multiple functional prototypes and MVPs from scratch based on product requirements.</li>
-              <li>Implemented responsive design patterns to ensure cross-device compatibility and optimal UX.</li>
-            </ul>
-          </div>
-        </div>
+        <article class="timeline-item reveal">
+          <h3 class="timeline-role">Software Engineer</h3>
+          <p class="timeline-company">Lumberfi, Bangalore</p>
+          <p class="timeline-date">Jun 2026 — Present</p>
+          <p class="timeline-desc">Shipping core product features with cross-functional teams.</p>
+        </article>
+        <article class="timeline-item reveal">
+          <h3 class="timeline-role">Software Engineer</h3>
+          <p class="timeline-company">Intverse.io</p>
+          <p class="timeline-date">Nov 2023 — May 2026</p>
+          <p class="timeline-desc">Led full-stack development of NexDev, an enterprise Kafka platform, including migration workflows and a RAG documentation chatbot.</p>
+        </article>
+        <article class="timeline-item reveal">
+          <h3 class="timeline-role">Full-Stack Developer Intern</h3>
+          <p class="timeline-company">Intverse.io</p>
+          <p class="timeline-date">Jul 2023 — Nov 2023</p>
+          <p class="timeline-desc">Built Kafka CRUD APIs on a Backstage portal and covered them with Jest at 80%+.</p>
+        </article>
+        <article class="timeline-item reveal">
+          <h3 class="timeline-role">Front-End Engineer</h3>
+          <p class="timeline-company">Deepthought EduTech</p>
+          <p class="timeline-date">Jun 2022 — Jul 2023</p>
+          <p class="timeline-desc">Shipped React and Node production apps and MVPs, including responsive layouts across devices.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ==================== CONTACT SECTION ==================== -->
   <section id="contact" class="section">
     <div class="container">
-      <div class="section-label reveal">patch_bay</div>
-      <h2 class="section-title reveal reveal-delay-1">
-        Let's <span class="accent">collaborate</span>
-      </h2>
-
+      <h2 class="section-title reveal">Contact</h2>
       <div class="contact-grid">
-        <!-- Contact Form -->
-        <div class="contact-form-wrapper reveal reveal-delay-2">
-          <div class="contact-form-header">
-            <div class="terminal-dot red"></div>
-            <div class="terminal-dot yellow"></div>
-            <div class="terminal-dot green"></div>
-            <span class="terminal-title">send_signal.sh</span>
+        <form class="contact-form reveal" id="contact-form">
+          <div class="form-group">
+            <label class="form-label" for="contact-name">Name</label>
+            <input type="text" id="contact-name" class="form-input" name="name" autocomplete="name" required>
           </div>
-          <form class="contact-form" id="contact-form">
-            <div class="form-group">
-              <label class="form-label">
-                <span class="prompt-symbol">INPUT</span> &gt; name
-              </label>
-              <input type="text" id="contact-name" class="form-input" placeholder="John Doe" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">
-                <span class="prompt-symbol">INPUT</span> &gt; email
-              </label>
-              <input type="email" id="contact-email" class="form-input" placeholder="john@example.com" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">
-                <span class="prompt-symbol">INPUT</span> &gt; message
-              </label>
-              <textarea id="contact-message" class="form-input" placeholder="Hey, I'd love to work together..." required></textarea>
-            </div>
-            <button type="submit" class="btn-primary form-submit">
-              <i class='bx bx-broadcast'></i> Transmit Signal
-            </button>
-          </form>
-        </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-email">Email</label>
+            <input type="email" id="contact-email" class="form-input" name="email" autocomplete="email" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-message">Message</label>
+            <textarea id="contact-message" class="form-input" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary form-submit">Send</button>
+          <p class="form-status" id="form-status" role="status" hidden></p>
+        </form>
 
-        <!-- Contact Info -->
-        <div class="contact-info reveal reveal-delay-3">
+        <div class="contact-info reveal">
           <p class="contact-text">
-            Have a project in mind? Want to jam on some code? Or just want to talk gear?
-            My channels are always open. Let's make some noise together.
+            Have a role or a project in mind? Send a message, or reach out directly.
           </p>
-
-          <div class="social-grid">
-            <a href="https://github.com/mohitjakhotra" target="_blank" class="social-link">
-              <i class='bx bxl-github'></i> GitHub
-            </a>
-            <a href="https://linkedin.com/in/mohitjakhotra" target="_blank" class="social-link">
-              <i class='bx bxl-linkedin'></i> LinkedIn
-            </a>
-            <a href="https://wa.me/9103131109" target="_blank" class="social-link">
-              <i class='bx bxl-whatsapp'></i> WhatsApp
-            </a>
-            <a href="mailto:mohitjakhotra@gmail.com" class="social-link">
-              <i class='bx bx-envelope'></i> Email
-            </a>
-          </div>
+          <ul class="social-grid">
+            <li>
+              <a href="https://github.com/mohitjakhotra" target="_blank" rel="noopener noreferrer" class="social-link">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.47-1.1-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8a9.56 9.56 0 0 1 2.5.34c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.86v2.76c0 .26.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/in/mohitjakhotra" target="_blank" rel="noopener noreferrer" class="social-link">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 9H4V20h2.5V9zM5.25 4A1.5 1.5 0 1 0 5.26 7a1.5 1.5 0 0 0 0-3zM20 20h-2.5v-5.6c0-1.55-.55-2.6-1.93-2.6-1.05 0-1.68.7-1.95 1.38-.1.24-.13.58-.13.92V20H11V9h2.4v1.51c.36-.55 1.15-1.66 2.9-1.66 2.12 0 3.7 1.38 3.7 4.36V20z"/></svg>
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a href="mailto:mohitjakhotra@gmail.com" class="social-link">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4.2 7h15.6L12 12.2zM4 17h16V8.4l-8 5.3-8-5.3V17z"/></svg>
+                Email
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== FOOTER ==================== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
-        <p class="footer-text">
-          <span class="accent">&lt;</span> Composed with ☕ by <span class="accent">Mohit Jakhotra</span> <span class="accent">/&gt;</span>
-        </p>
-        <div class="footer-links">
-          <a href="https://github.com/mohitjakhotra" target="_blank" class="footer-link">
-            <i class='bx bxl-github'></i> GitHub
-          </a>
-          <a href="#hero" class="footer-link">
-            ↑ Back to top
-          </a>
-        </div>
+        <p class="footer-text">Mohit Jakhotra</p>
+        <a href="#hero" class="footer-link">Back to top</a>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="js/effects.js" defer></script>
   <script src="js/main.js" defer></script>
 
 </body>

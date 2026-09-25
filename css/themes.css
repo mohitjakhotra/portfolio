@@ -5,8 +5,8 @@
   --bg-overlay: rgba(251, 251, 253, 0.8);
 
   --text-primary: #1d1d1f;
-  --text-secondary: #6e6e73;
-  --text-muted: #86868b;
+  --text-secondary: #424245;
+  --text-muted: #6e6e73;
 
   --accent: #0071e3;
   --accent-contrast: #ffffff;
@@ -23,8 +23,8 @@ body.dark-mode {
   --bg-overlay: rgba(0, 0, 0, 0.72);
 
   --text-primary: #f5f5f7;
-  --text-secondary: #a1a1a6;
-  --text-muted: #86868b;
+  --text-secondary: #d2d2d7;
+  --text-muted: #a1a1a6;
 
   --accent: #2997ff;
   --accent-contrast: #000000;

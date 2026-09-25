@@ -6,6 +6,7 @@
 
 html {
   scroll-behavior: smooth;
+  --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 body {
@@ -113,12 +114,17 @@ h1, h2, h3 {
   color: var(--text-primary);
 }
 
-.nav-cta {
+.nav-links a.nav-cta {
   margin-left: 6px;
   padding: 6px 14px;
   font-weight: 500;
   background: var(--accent);
   color: var(--accent-contrast);
+}
+
+.nav-links a.nav-cta:hover {
+  color: var(--accent-contrast);
+  filter: brightness(0.92);
 }
 
 .nav-toggle {
@@ -258,6 +264,53 @@ body.dark-mode .theme-toggle .icon-sun { display: block; }
   justify-content: center;
 }
 
+.site-header {
+  animation: apple-fade 0.9s var(--ease-apple) both;
+}
+
+.hero-kicker {
+  animation: apple-rise 0.95s var(--ease-apple) 0.12s both;
+}
+
+.hero-name {
+  animation: apple-rise-title 1.15s var(--ease-apple) 0.22s both;
+}
+
+.hero-tagline {
+  animation: apple-rise 1s var(--ease-apple) 0.42s both;
+}
+
+.hero-actions {
+  animation: apple-rise 1s var(--ease-apple) 0.58s both;
+}
+
+@keyframes apple-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes apple-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes apple-rise-title {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .btn-primary,
 .btn-secondary {
   font-size: 0.95rem;
@@ -270,9 +323,18 @@ body.dark-mode .theme-toggle .icon-sun { display: block; }
   border: none;
 }
 
-.btn-primary {
+.btn-primary,
+a.btn-primary,
+button.btn-primary {
   background: var(--accent);
   color: var(--accent-contrast);
+}
+
+.btn-primary:hover,
+a.btn-primary:hover,
+button.btn-primary:hover {
+  color: var(--accent-contrast);
+  filter: brightness(0.92);
 }
 
 .btn-secondary {
@@ -283,7 +345,6 @@ body.dark-mode .theme-toggle .icon-sun { display: block; }
 .hero .btn-secondary { background: #e8e8ed; }
 body.dark-mode .hero .btn-secondary { background: #1d1d1f; color: var(--text-primary); }
 
-.btn-primary:hover { filter: brightness(0.92); }
 .btn-secondary:hover { filter: brightness(0.97); }
 
 .about-copy {
@@ -516,8 +577,8 @@ body.dark-mode .form-status.error { color: #ff6961; }
 
 .reveal {
   opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(16px);
+  transition: opacity 0.9s var(--ease-apple), transform 0.9s var(--ease-apple);
 }
 
 .reveal.visible {
@@ -527,6 +588,13 @@ body.dark-mode .form-status.error { color: #ff6961; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .site-header,
+  .hero-kicker,
+  .hero-name,
+  .hero-tagline,
+  .hero-actions {
+    animation: none;
+  }
   .reveal {
     opacity: 1;
     transform: none;

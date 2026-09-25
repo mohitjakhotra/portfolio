@@ -25,7 +25,7 @@ function initNavigation() {
   if (!nav || !toggle) return;
 
   const links = [...nav.querySelectorAll('a[href^="#"]')];
-  const desktopQuery = window.matchMedia('(min-width: 769px)');
+  const desktopQuery = window.matchMedia('(min-width: 901px)');
 
   function setOpen(open) {
     nav.classList.toggle('is-open', open);

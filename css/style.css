@@ -277,6 +277,19 @@ body.dark-mode .theme-toggle .icon-sun { display: block; }
   font-size: clamp(3.25rem, 8vw, 5.5rem);
   letter-spacing: -0.035em;
   margin-bottom: 12px;
+  
+  /* Shimmer gradient */
+  background: linear-gradient(
+    -45deg,
+    var(--text-primary) 40%,
+    var(--shimmer-color) 50%,
+    var(--text-primary) 60%
+  );
+  background-size: 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .hero-tagline {
@@ -305,7 +318,7 @@ body.dark-mode .theme-toggle .icon-sun { display: block; }
 }
 
 .hero-name {
-  animation: apple-rise-title 1.15s var(--ease-apple) 0.22s both;
+  animation: apple-rise-title 1.15s var(--ease-apple) 0.22s both, shimmer 6s linear infinite 1.5s;
 }
 
 .hero-tagline {
@@ -340,6 +353,15 @@ body.dark-mode .theme-toggle .icon-sun { display: block; }
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
